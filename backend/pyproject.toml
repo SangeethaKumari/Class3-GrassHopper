@@ -1,0 +1,25 @@
+[project]
+name = "vector-search-backend"
+version = "0.1.0"
+description = "FastAPI backend for vector search"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.109.2",
+    "uvicorn>=0.27.1",
+    "pandas>=2.2.0",
+    "sentence-transformers>=2.3.1",
+    "pydantic>=2.6.1",
+    "numpy>=1.26.4",
+    "google-adk[extensions]>=1.27.2",
+    "nbformat>=5.10.4",
+    "nbconvert>=7.17.0",
+    "playwright>=1.58.0",
+    "google-genai>=1.69.0",
+    "matplotlib>=3.10.8",
+    "seaborn>=0.13.2",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=8.0.0",
+]

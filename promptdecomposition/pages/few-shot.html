@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Few-Shot Prompting - Global Prompting Guide</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Few-Shot Prompting</h1>
+            <p class="subtitle">Guiding the Model with Examples</p>
+        </header>
+
+        <main class="card">
+            <div class="content">
+                <h2>Overview</h2>
+                <p>Few-shot prompting provides the model with a few examples (shots) to demonstrate the desired output
+                    format, style, or logic.</p>
+
+                <h3>Why It's Powerful</h3>
+                <p>By providing examples, you reduce ambiguity. The model learns the "pattern" you want it to follow,
+                    which is essential for complex formatting or niche tasks.</p>
+
+                <h3>Example</h3>
+                <pre><code>Prompt: 
+Input: Apple -> Output: Fruit
+Input: Carrot -> Output: Vegetable
+Input: Laptop -> Output: 
+
+Output: Electronic Device</code></pre>
+
+                <h3>When to Use</h3>
+                <p>Use few-shot when you need the model to output a very specific format or when zero-shot is failing to
+                    capture the nuance of your request.</p>
+            </div>
+            <a href="../index.html" class="back-link">← Back to Guide</a>
+        </main>
+    </div>
+</body>
+
+</html>

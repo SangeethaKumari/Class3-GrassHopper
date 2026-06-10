@@ -1,0 +1,9 @@
+[project]
+name = "vector-search-frontend"
+version = "0.1.0"
+description = "Streamlit frontend for vector search"
+requires-python = ">=3.12"
+dependencies = [
+    "streamlit>=1.31.1",
+    "requests>=2.31.0",
+]

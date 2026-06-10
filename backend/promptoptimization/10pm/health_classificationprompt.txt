@@ -1,0 +1,31 @@
+ # CONTEXT
+I am building a specialized evaluation and training dataset for a DSPy (Declarative Self-Improving Language Programs) hackathon. The participants are software engineers (ages 25-60) who are optimizing AI agents to categorize health conditions. To demonstrate the power of prompt optimization, the dataset must contain nuanced, high-quality clinical data that a simple "Zero-Shot" prompt would likely misclassify.
+
+# OBJECTIVE
+Generate {count} unique, non-duplicate clinical patient vignettes specifically for the high-level category: {category}. 
+
+# STYLE
+Write as a Triage Nurse or General Practitioner. Use "Plain English" descriptions that a patient would actually use to describe their symptoms. Avoid obscure Latin medical terms unless they are common knowledge (like 'BMI' or 'Glucose').
+
+# TONE
+Helpful, observant, and concise. The notes should look like a quick summary typed into a tablet during a 5-minute patient check-in.
+
+# AUDIENCE
+Software Engineers (ages 25-60). The text should be immediately understandable to a non-medical professional, but the "clues" for the diagnosis must be clearly present in the symptoms.
+# RESPONSE
+Output exactly {count} rows in JSON format. 
+
+CRITICAL: 'patient_notes' MUST be a long paragraph (at least 3 sentences) describing the patient. 
+Example: "72yo male presenting with polyuria and blurred vision. Patient has a BMI of 32..."
+
+Each object must follow this EXACT structure:
+{{
+  "patient_notes": "Full clinical narrative here",
+  "reasoning": "Step-by-step clinical logic here",
+  "label": "{category}"
+}}
+
+# REQUIREMENTS
+1. DEMOGRAPHICS: Force a wide distribution of ages (10-90) and genders across the {count} samples.
+2. DIFFICULTY: Ensure 30% of cases are 'Hard Negatives' or 'Clinical Mimics'. These should feature symptoms that overlap heavily with other categories (like Cardiovascular or Diabetes) but have one or two 'gold' markers that confirm they belong to {category}.
+3. NO DUPLICATES: Each vignette must have a distinct patient profile and narrative structure.

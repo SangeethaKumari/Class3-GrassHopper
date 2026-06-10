@@ -1,0 +1,46 @@
+services:
+  # ----------------------------------------------------
+  # 1. THE BACKEND (FastAPI Microservice)
+  # ----------------------------------------------------
+  - type: web
+    name: vector-search-backend
+    runtime: python
+    region: oregon 
+    plan: free # or starter
+    
+    # We must install dependencies AND run the ingestion script during build
+    # because the disk is ephemeral. We rebuild the DB on every deploy.
+    buildCommand: "pip install -U pip && pip install uv && uv pip install -r pyproject.toml --system && python backend/ingest.py"
+    
+    # Start the Uvicorn server
+    startCommand: "uvicorn backend.main:app --host 0.0.0.0 --port $PORT"
+    
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      - key: PORT
+        value: 8000
+
+  # ----------------------------------------------------
+  # 2. THE FRONTEND (Streamlit UI)
+  # ----------------------------------------------------
+  - type: web
+    name: vector-search-frontend
+    runtime: python
+    region: oregon
+    plan: free
+    
+    # Just install the frontend dependencies
+    buildCommand: "pip install -U pip && pip install uv && uv pip install -r pyproject.toml --system"
+    
+    # Run Streamlit on the port Render assigns
+    startCommand: "streamlit run frontend/app.py --server.port $PORT --server.address 0.0.0.0"
+    
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.0
+      # This tells the frontend where the backend lives.
+      # YOU MUST UPDATE THIS VALUE IN THE RENDER DASHBOARD AFTER DEPLOYING THE BACKEND!
+      # Example: https://vector-search-backend.onrender.com
+      - key: API_URL 
+        value: https://vector-search-backend.onrender.com 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chain-of-Thought - Global Prompting Guide</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Chain-of-Thought</h1>
+            <p class="subtitle">Enabling Logical Reasoning</p>
+        </header>
+
+        <main class="card">
+            <div class="content">
+                <h2>Overview</h2>
+                <p>Chain-of-Thought (CoT) prompting encourages the model to explain its reasoning step-by-step before
+                    arriving at a final answer.</p>
+
+                <h3>The "Let's Think Step-by-Step" Magic</h3>
+                <p>Simply adding the phrase "Let's think step by step" can significantly improve the model's performance
+                    on complex math, logic, and multi-step reasoning tasks.</p>
+
+                <h3>Example</h3>
+                <pre><code>Prompt: If I have 3 oranges and buy 2 more, then give 1 to a friend, how many do I have? Let's think step by step.
+
+Output: 
+1. Start with 3 oranges.
+2. Buy 2 more: 3 + 2 = 5.
+3. Give 1 away: 5 - 1 = 4.
+Answer: 4.</code></pre>
+
+                <h3>When to Use</h3>
+                <p>Crucial for math problems, logical puzzles, and any task where the process is as important as the
+                    result.</p>
+            </div>
+            <a href="../index.html" class="back-link">← Back to Guide</a>
+        </main>
+    </div>
+</body>
+
+</html>
